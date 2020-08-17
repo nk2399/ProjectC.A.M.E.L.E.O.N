@@ -10,20 +10,20 @@ public class FPplayerMovement : MonoBehaviour
     private float z;
     private Vector3 move;
     public CharacterController controller;
-    public float speed = 3f;    // change speed at run button up as well
+    public float speed = 50f;    // change speed at run button up as well
     private Vector3 velocity;
-    public float gravity = -30f;
+    public float gravity = -250f;
 
     //ground Check
 
     public Transform groundCheck;
-    private float groundDistance = 0.4f;       //radius of check
+    public float groundDistance = 1f;       //radius of check
     public LayerMask groundMask;
-    private bool isGrounded;
+    public bool isGrounded;
 
     // jump
 
-    private float jumpHeight = 1f;
+    private float jumpHeight = 20f;
     private int jumpCounter = 2;
 
     // jump rotate
@@ -60,7 +60,7 @@ public class FPplayerMovement : MonoBehaviour
     {
         playerScale = transform.localScale.y;
         xRotation = 0f;
-        mouseSensetivity = 500;
+        mouseSensetivity = 400;
         Cursor.lockState = CursorLockMode.Locked;
     }
     void Update()
@@ -128,7 +128,7 @@ public class FPplayerMovement : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.LeftShift) && isRunning == true)
         {
-            speed = 3f;                                                       // change speed here as well!!
+            speed = 50f;                                                       // change speed here as well!!
             isRunning = false;
 
         }
