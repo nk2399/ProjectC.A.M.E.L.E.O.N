@@ -2020,13 +2020,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.12702768, y: -0.11526132, z: 0.014863309, w: 0.9850674}
-  m_LocalPosition: {x: 1.45, y: 1.77, z: -4.1}
+  m_LocalRotation: {x: 0.1836161, y: -0.11421256, z: 0.021484626, w: 0.9761041}
+  m_LocalPosition: {x: 3, y: 2.63, z: -7.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8889233489029257509}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 14.696001, y: -13.348001, z: 0}
+  m_LocalEulerAnglesHint: {x: 21.307001, y: -13.348001, z: 0}
 --- !u!1001 &963216146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3841,12 +3841,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 7.34
-  m_Radius: 1.36
+  m_Radius: 1.16
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: -0.1, y: -2.29, z: -0.51}
+  m_Center: {x: -0.35, y: -2.29, z: -1.24}
 --- !u!114 &1001168388511063500
 MonoBehaviour:
   m_ObjectHideFlags: 0
