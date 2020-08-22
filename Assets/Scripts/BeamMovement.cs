@@ -11,7 +11,7 @@ public class BeamMovement : MonoBehaviour
 
 
 
-   void Update()
+  /* void Update()
     {
         if (goingRight == true)
         {
@@ -26,7 +26,7 @@ public class BeamMovement : MonoBehaviour
 
         }
 
-    }
+    }*/
     private void OnTriggerEnter(Collider other)
     {
        /* if (other.gameObject.tag == "ChangeDirClaw")
