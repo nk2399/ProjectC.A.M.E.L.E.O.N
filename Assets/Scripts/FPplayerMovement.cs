@@ -147,7 +147,7 @@ public class FPplayerMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.C) && isCrouching == true)
         {
 
-            transform.localScale = new Vector3(transform.localScale.x, 4.5f, transform.localScale.z);
+            transform.localScale = new Vector3(transform.localScale.x, 6.735f, transform.localScale.z);
             isCrouching = false;
         }
 
