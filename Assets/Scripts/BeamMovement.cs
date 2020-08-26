@@ -29,11 +29,7 @@ public class BeamMovement : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-       /* if (other.gameObject.tag == "ChangeDirClaw")
-        {
-            goingRight = !goingRight;
-
-        }*/
+      
         if (other.gameObject.name == "Carmel")
         {
             print("onplatform");

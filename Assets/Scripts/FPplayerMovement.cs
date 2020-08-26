@@ -23,7 +23,7 @@ public class FPplayerMovement : MonoBehaviour
 
     // jump
 
-    private float jumpHeight = 20f;
+    private float jumpHeight = 23f;
     private int jumpCounter = 2;
 
     // jump rotate
@@ -62,6 +62,7 @@ public class FPplayerMovement : MonoBehaviour
         xRotation = 0f;
         mouseSensetivity = 400;
         Cursor.lockState = CursorLockMode.Locked;
+        
     }
     void Update()
     {
