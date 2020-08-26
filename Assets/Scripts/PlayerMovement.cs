@@ -49,6 +49,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 normalVector = Vector3.up;
     private Vector3 wallNormalVector;
 
+    //Animator
+    public Animator Animator;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
