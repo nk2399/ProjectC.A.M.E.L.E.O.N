@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     //Jumping
     private bool readyToJump = true;
     private float jumpCooldown = 0.25f;
-    public float jumpForce = 550f;
+    public float jumpForce = 12496f;
 
     //Input
     float x, y;
