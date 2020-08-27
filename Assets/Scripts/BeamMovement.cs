@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BeamMovement : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject Player;
+    public GameObject thePlatform;
    private bool goingRight = true;
     public float moveSpeed = 1f;
   private bool onBeam = false;
@@ -25,30 +26,40 @@ public class BeamMovement : MonoBehaviour
             transform.position = myPosition;
 
         }
-
+       
     }
+    private void OnCollisionEnter(Collision collision)
+
+    {
+        if (collision.gameObject.name == "CARMEL")
+        {
+            print("on");
+            Player.transform.parent = thePlatform.transform;
+        }
+        
+       
+    }
+
+    private void OnCollisionExit(Collision collision)
+
+    {
+        if (collision.gameObject.name == "CARMEL")
+        {
+            print("off");
+            Player.transform.parent = null;
+        }
+    }
+
+
+    //beam change direction obstical
+
+
     private void OnTriggerEnter(Collider other)
     {
-      
-        if (other.gameObject.name == "Carmel")
+       if (other.gameObject.name == "BLOCKER")
         {
-            print("onplatform");
-            onBeam = true;
-           // player.transform.parent = transform;
-            player.transform.SetParent(gameObject.transform);
-
-        }
-
-    }
-  
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject== player)
-        {
-            onBeam = false;
-            player.transform.parent = null;
-
+            goingRight = !goingRight;
         }
     }
+
 }
-    

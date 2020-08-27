@@ -7,38 +7,27 @@ public class PlatformStay : MonoBehaviour
     public GameObject Player;
     public GameObject thePlatform;
     public bool onBeam = false;
-   
 
-  
 
-    private void OnTriggerEnter(Collider other)
-    {
-        // if (other.gameObject.tag == "Player")
-
-        //if (other.gameObject.name == "CarmelPlayer")
-        if (other.gameObject.name == "Moving platform")
+     private void OnCollisionEnter(Collision collision)
+    
+       {
+        if (collision.gameObject.name == "CARMEL")
         {
-            print("onplatform");
-            onBeam = true;
+            print("on");
             Player.transform.parent = thePlatform.transform;
-           
-            
         }
     }
-   private void OnTriggerExit(Collider other)
+
+    private void OnCollisionExit(Collision collision)
+    
     {
-        onBeam = false;
-        // if (other.gameObject.tag == "Player")
-        // if (other.gameObject.name == "CarmelPlayer")
-      /*  if (other.gameObject.name == "Moving platform")
-        {*/
-            print("off of platform");
-
-            //Player.transform.parent = null;
-            transform.parent = null;
-
+        if (collision.gameObject.name == "CARMEL")
+        {
+            print("off");
+            Player.transform.parent = null;
         }
     }
+}
 
-
-
+   

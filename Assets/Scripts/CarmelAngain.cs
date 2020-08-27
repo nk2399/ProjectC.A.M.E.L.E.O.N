@@ -19,6 +19,7 @@ public class CarmelAngain : MonoBehaviour
     //Jump
     Rigidbody rb;
     bool ground;
+    private int doubleJumpCount;
 
     //Animation
     public Animator Animator;
@@ -27,21 +28,20 @@ public class CarmelAngain : MonoBehaviour
     void Start()
     {
         RotationSpeed = 250f;
-        speed = 80;
+        speed = 80;     //if changing here change line 64 as well . make run speed back to normal after buttonUp
         rb = GetComponent<Rigidbody>();
+        doubleJumpCount = 2;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        //Camera
-        Rotation = Input.GetAxis("Mouse X") * RotationSpeed * Time.deltaTime;
-        transform.Rotate(0, Rotation, 0);
+        //Camera 
 
         CameraRotation = Input.GetAxis("Mouse Y") * RotationSpeed * Time.deltaTime;
         CameraFinal -= CameraRotation;
-        CameraFinal = Mathf.Clamp(CameraFinal, -20, 10);
+        CameraFinal = Mathf.Clamp(CameraFinal, -80, 80);    ////-20, 10);
         Camera.localRotation = Quaternion.Euler(CameraFinal, 0, 0);
 
 
@@ -51,10 +51,32 @@ public class CarmelAngain : MonoBehaviour
 
         transform.Translate(x, 0, z);
 
+        //Run
+
+        if (Input.GetButtonDown("Fire3"))
+        {
+            speed = speed * 3;
+        }
+        else if (Input.GetButtonUp("Fire3")) 
+        {
+            speed = 80f;
+        }
+                
+              
+        
         //Jump
-        if (Input.GetKey(KeyCode.Space) && ground)
+
+        if (Input.GetKey(KeyCode.Space) && ground && doubleJumpCount ==2)
         {
             rb.AddForce(0, 1000, 0);
+            doubleJumpCount -= 1;
+        }
+
+        //double jump
+        if (Input.GetKey(KeyCode.Space)  && doubleJumpCount == 1)
+        {
+            rb.AddForce(0, 1000, 0);
+            doubleJumpCount -= 1;
         }
 
 
@@ -70,13 +92,14 @@ public class CarmelAngain : MonoBehaviour
         }
 
     }
-
+    
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "ground")
         {
             ground = true;
+            doubleJumpCount = 2;
         }
     }
 
