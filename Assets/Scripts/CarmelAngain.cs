@@ -24,6 +24,12 @@ public class CarmelAngain : MonoBehaviour
     public Animator Animator;
     bool rifle;
 
+    //Gun
+    public GameObject Gun;
+    public Transform HandPostion;
+    public GameObject ShootPoint;
+    public GameObject Bullet;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -89,7 +95,13 @@ public class CarmelAngain : MonoBehaviour
             Animator.SetBool("rifle", true);
         }
 
+        //Shooting
 
+        if (Input.GetMouseButtonDown(0) && rifle)
+        {
+            Instantiate(Bullet, ShootPoint.transform.position, ShootPoint.transform.rotation);
+            rb.AddForce(400, 0, 0);
+        }
 
 
 
@@ -117,11 +129,16 @@ public class CarmelAngain : MonoBehaviour
         }
     }
 
+
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Rifle")
         {
             rifle = true;
+            Gun.transform.parent = HandPostion.transform;
+            Gun.transform.localPosition = new Vector3(0.0017f, 0.007f, 0.0153f);
+            Gun.transform.localEulerAngles = new Vector3(-23.522f, 79.60201f, -429.104f);
         }
     }
 
