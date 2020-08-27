@@ -9,6 +9,7 @@ TagManager:
   - Hookable
   - grappling_node
   - ground
+  - Rifle
   layers:
   - Default
   - TransparentFX

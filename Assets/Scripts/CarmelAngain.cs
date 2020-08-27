@@ -22,6 +22,7 @@ public class CarmelAngain : MonoBehaviour
 
     //Animation
     public Animator Animator;
+    bool rifle;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class CarmelAngain : MonoBehaviour
         RotationSpeed = 250f;
         speed = 80;
         rb = GetComponent<Rigidbody>();
+        rifle = false;
     }
 
     // Update is called once per frame
@@ -57,17 +59,41 @@ public class CarmelAngain : MonoBehaviour
             rb.AddForce(0, 1000, 0);
         }
 
+        if (ground == false)
+        {
+            rb.AddForce(0, -25, 0);
+        }
 
         //Animation
-        if (x>0 || z>0)
+
+        //Walking
+        if (x>0 || z>0 && rifle == false)
         {
             Animator.SetBool("walking", true);
         }
 
-        if (x==0 && z==0)
+        if (x==0 && z==0 && rifle == false)
         {
             Animator.SetBool("walking", false);
         }
+
+        if (x > 0 || z > 0 && rifle)
+        {
+            Animator.SetBool("WalkingRifle", true);
+            Animator.SetBool("rifle", false);
+        }
+
+        if (x == 0 && z == 0 && rifle)
+        {
+            Animator.SetBool("WalkingRifle", false);
+            Animator.SetBool("rifle", true);
+        }
+
+
+
+
+
+
 
     }
 
@@ -77,6 +103,8 @@ public class CarmelAngain : MonoBehaviour
         if (collision.gameObject.tag == "ground")
         {
             ground = true;
+            Animator.SetBool("jumping", false);
+
         }
     }
 
@@ -85,10 +113,17 @@ public class CarmelAngain : MonoBehaviour
         if (collision.gameObject.tag == "ground")
         {
             ground = false;
+            Animator.SetBool("jumping", true);
         }
     }
 
- 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Rifle")
+        {
+            rifle = true;
+        }
+    }
 
 
 }
