@@ -52,14 +52,14 @@ public class CarmelAngain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Cursor.lockState = CursorLockMode.Locked;
         //Camera
         Rotation = Input.GetAxis("Mouse X") * RotationSpeed * Time.deltaTime;
         transform.Rotate(0, Rotation, 0);
 
         CameraRotation = Input.GetAxis("Mouse Y") * RotationSpeed * Time.deltaTime;
         CameraFinal -= CameraRotation;
-        CameraFinal = Mathf.Clamp(CameraFinal, -20, 10);
+        CameraFinal = Mathf.Clamp(CameraFinal, -90, 65);
         Camera.localRotation = Quaternion.Euler(CameraFinal, 0, 0);
 
 
