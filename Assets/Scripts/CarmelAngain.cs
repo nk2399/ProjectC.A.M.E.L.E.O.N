@@ -30,6 +30,12 @@ public class CarmelAngain : MonoBehaviour
     public GameObject ShootPoint;
     public GameObject Bullet;
 
+    //Transperent
+    Renderer rend;
+    Renderer rendeyes;
+    public GameObject body;
+    public GameObject eyes;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +43,10 @@ public class CarmelAngain : MonoBehaviour
         speed = 80;
         rb = GetComponent<Rigidbody>();
         rifle = false;
+        rend = body.GetComponent<Renderer>();
+        rendeyes = eyes.GetComponent<Renderer>();
+        rend.enabled = true;
+        rendeyes.enabled = true;
     }
 
     // Update is called once per frame
@@ -103,11 +113,23 @@ public class CarmelAngain : MonoBehaviour
             rb.AddForce(400, 0, 0);
         }
 
+        //Transperent
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            rend.enabled = false;
+            rendeyes.enabled = false;
+        }
+
+        if (Input.GetKeyUp(KeyCode.G))
+        {
+            rend.enabled = true;
+            rendeyes.enabled = true;
+        }
+            
 
 
 
-
-    }
+        }
 
 
     private void OnCollisionEnter(Collision collision)
