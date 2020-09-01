@@ -36,6 +36,9 @@ public class CarmelAngain : MonoBehaviour
     public GameObject body;
     public GameObject eyes;
 
+    //Run
+    bool running;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +50,8 @@ public class CarmelAngain : MonoBehaviour
         rendeyes = eyes.GetComponent<Renderer>();
         rend.enabled = true;
         rendeyes.enabled = true;
+        running = false;
+        Animator.SetBool("running", false);
     }
 
     // Update is called once per frame
@@ -105,31 +110,57 @@ public class CarmelAngain : MonoBehaviour
             Animator.SetBool("rifle", true);
         }
 
-        //Shooting
 
-        if (Input.GetMouseButtonDown(0) && rifle)
-        {
-            Instantiate(Bullet, ShootPoint.transform.position, ShootPoint.transform.rotation);
-            rb.AddForce(400, 0, 0);
-        }
 
-        //Transperent
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            rend.enabled = false;
-            rendeyes.enabled = false;
-        }
+            //Run
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                speed = 160;
+                Animator.SetBool("running", true);
+                Animator.SetBool("walking", false);
+                Animator.SetBool("WalkingRifle", false);
+              
+            }
 
-        if (Input.GetKeyUp(KeyCode.G))
-        {
-            rend.enabled = true;
-            rendeyes.enabled = true;
-        }
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                speed = 80;
+                Animator.SetBool("running", false);
+            }
+
+
+
+
+            //Shooting
+
+            if (Input.GetMouseButtonDown(0) && rifle)
+            {
+                Instantiate(Bullet, ShootPoint.transform.position, ShootPoint.transform.rotation);
+                rb.AddForce(400, 0, 0);
+            }
+
+            //Transperent
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                rend.enabled = false;
+                rendeyes.enabled = false;
+            }
+
+            if (Input.GetKeyUp(KeyCode.G))
+            {
+                rend.enabled = true;
+                rendeyes.enabled = true;
+            }
+
+        
             
+        
+
+     
 
 
 
-        }
+    }
 
 
     private void OnCollisionEnter(Collision collision)
