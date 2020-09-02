@@ -9,25 +9,33 @@ public class KeyPickUp : MonoBehaviour
     private bool tookKeyOnce= false;
     public GameObject jailDoor;
     public GameObject DoorLockCube;
+    public GameObject newNoColliderKey;
+   
 
+ 
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Player" && tookKeyOnce == false)  
         {
+           
             tookKeyOnce = true;
-            transform.parent = playerKeyHolder.transform;
-            transform.position = playerKeyHolder.position;
-            
-            
+            newNoColliderKey = Instantiate (newNoColliderKey, playerKeyHolder.position, playerKeyHolder.transform.rotation ) ;
+            newNoColliderKey.transform.parent = playerKeyHolder.transform;
+            newNoColliderKey.transform.position = playerKeyHolder.position;
+            Destroy(gameObject);
+           
+
+
+
         }
-        if (collider.gameObject.tag == "JAILDOOR")
+       /* if (collider.gameObject.tag == "JAILDOOR")
         {
            
             tookKeyOnce = true;
             transform.parent = jailDoorKeyHolder.transform;
             transform.position = jailDoorKeyHolder.position;
             transform.rotation = jailDoorKeyHolder.rotation;
-            Destroy(DoorLockCube);
+            Destroy(DoorLockCube);*/
           
 
         }
@@ -35,4 +43,4 @@ public class KeyPickUp : MonoBehaviour
         
 
     }
-}
+

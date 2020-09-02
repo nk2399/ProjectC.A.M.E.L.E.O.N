@@ -77,7 +77,7 @@ public class CarmelAngain : MonoBehaviour
         //Jump
         if (Input.GetKey(KeyCode.Space) && ground)
         {
-            rb.AddForce(0, 1000, 0);
+            rb.AddForce(0, 2500, 0);
         }
 
         if (ground == false)
