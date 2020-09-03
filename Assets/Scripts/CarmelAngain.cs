@@ -133,16 +133,16 @@ public class CarmelAngain : MonoBehaviour
 
 
 
-            //Shooting
+        //Shooting
 
-            if (Input.GetMouseButtonDown(0) && rifle)
-            {
-                Instantiate(Bullet, ShootPoint.transform.position, ShootPoint.transform.rotation);
-                rb.AddForce(400, 0, 0);
-            }
+        if (Input.GetMouseButtonDown(0) && rifle)
+        {
+            Instantiate(Bullet, ShootPoint.transform.position, ShootPoint.transform.rotation);
 
-            //Transperent
-            if (Input.GetKeyDown(KeyCode.G) && x < 0.3f && z < 0.31f)
+        }
+
+        //Transperent
+        if (Input.GetKeyDown(KeyCode.G) && x < 0.3f && z < 0.31f)
             {
                 rend.enabled = false;
                 rendeyes.enabled = false;

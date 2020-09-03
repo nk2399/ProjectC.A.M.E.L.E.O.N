@@ -7,17 +7,17 @@ public class GrapplingGun : MonoBehaviour
     public LayerMask whatIsGrappleable;
     public LayerMask canBreakWithGrapple;
     public Transform gunTip, cam, player;
-    private float maxDistance = 350f;
+    private float maxDistance = 450f;
     private SpringJoint joint;
     public GameObject destroyedVersion;
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             StartGrapple();
         }
-        else if (Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(1))
         {
             StopGrapple();
         }
