@@ -13,8 +13,8 @@ public class CarmelAngain : MonoBehaviour
 
     //Movement
     float speed;
-    float z;
-    float x;
+    public float z;
+    public float x;
 
     //Jump
     Rigidbody rb;
@@ -35,6 +35,7 @@ public class CarmelAngain : MonoBehaviour
     Renderer rendeyes;
     public GameObject body;
     public GameObject eyes;
+    public Collider col;
 
     //Run
     bool running;
@@ -52,6 +53,7 @@ public class CarmelAngain : MonoBehaviour
         rendeyes.enabled = true;
         running = false;
         Animator.SetBool("running", false);
+        col.enabled = true;
     }
 
     // Update is called once per frame
@@ -140,23 +142,32 @@ public class CarmelAngain : MonoBehaviour
             }
 
             //Transperent
-            if (Input.GetKeyDown(KeyCode.G))
+            if (Input.GetKeyDown(KeyCode.G) && x < 0.3f && z < 0.31f)
             {
                 rend.enabled = false;
                 rendeyes.enabled = false;
+                col.enabled = false;
+                rb.useGravity = false;
+                speed = 0;
             }
+
+
 
             if (Input.GetKeyUp(KeyCode.G))
             {
                 rend.enabled = true;
                 rendeyes.enabled = true;
-            }
+                col.enabled = true;
+                rb.useGravity = true;
+                speed = 80;
 
-        
-            
-        
+        }
 
-     
+
+
+
+
+
 
 
 

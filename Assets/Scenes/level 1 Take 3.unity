@@ -16419,6 +16419,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 3355970338313226734}
+  z: 0
+  x: 0
   Animator: {fileID: 388006876002090775}
   Gun: {fileID: 1915491343}
   HandPostion: {fileID: 9069666102057440526}
@@ -16426,6 +16428,7 @@ MonoBehaviour:
   Bullet: {fileID: 4672822218352788822, guid: be4fb4013604bb84585bd59248d48b46, type: 3}
   body: {fileID: 961363724002028408}
   eyes: {fileID: 3565272971697593566}
+  col: {fileID: 3355970337445118576}
 --- !u!1 &780893307 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100008, guid: f20a15ee7150fd647af421022dde4d44,
@@ -45054,7 +45057,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8f16ae59aa9c01b47b8bbe1c859fcf00, type: 2}
+  - {fileID: 2100000, guid: b134fdebed8799942b1059b0ac8f4f7c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

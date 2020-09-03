@@ -24,7 +24,7 @@ public class UnvisableForUnsiable : MonoBehaviour
         transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
         transform.localRotation = player.transform.localRotation;
 
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.G) && player.GetComponent<CarmelAngain>().x <0.3f && player.GetComponent<CarmelAngain>().z < 0.3f)
         {
             rend.enabled = true;
             reflectionprobe.enabled = true;
