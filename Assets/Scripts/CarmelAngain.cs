@@ -36,6 +36,7 @@ public class CarmelAngain : MonoBehaviour
     public GameObject body;
     public GameObject eyes;
     public Collider col;
+    public LayerMask groundCheck;
 
     //Run
     bool running;
@@ -43,6 +44,7 @@ public class CarmelAngain : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ground = false;
         RotationSpeed = 250f;
         speed = 80;
         rb = GetComponent<Rigidbody>();
@@ -54,11 +56,14 @@ public class CarmelAngain : MonoBehaviour
         running = false;
         Animator.SetBool("running", false);
         col.enabled = true;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        // ground check
+        
         Cursor.lockState = CursorLockMode.Locked;
         //Camera
         Rotation = Input.GetAxis("Mouse X") * RotationSpeed * Time.deltaTime;
@@ -79,6 +84,7 @@ public class CarmelAngain : MonoBehaviour
         //Jump
         if (Input.GetKey(KeyCode.Space) && ground)
         {
+            
             rb.AddForce(0, 2500, 0);
         }
 
