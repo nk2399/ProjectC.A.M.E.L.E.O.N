@@ -11,13 +11,14 @@ public class Parrot : MonoBehaviour
     public GameObject mesh;
     public MeshRenderer meshrend;
     float counter;
-
+    int val;
 
     // Start is called before the first frame update
     void Start()
     {
         meshrend = mesh.GetComponent<MeshRenderer>();
-        counter = 11;
+        val = 17;
+        counter = val;
     }
 
     // Update is called once per frame
@@ -26,6 +27,7 @@ public class Parrot : MonoBehaviour
         
         if (detected)
         {
+
             Animator.SetBool("detected", true);
             meshrend.enabled = false;
             counter = counter - Time.deltaTime;
@@ -34,7 +36,7 @@ public class Parrot : MonoBehaviour
         if (counter <= 0)
         {
             detected = false;
-            counter = 11;
+            counter = val;
             Animator.SetBool("detected", false);
             meshrend.enabled = true;
         }

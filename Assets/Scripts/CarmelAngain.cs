@@ -37,6 +37,7 @@ public class CarmelAngain : MonoBehaviour
     public GameObject eyes;
     public Collider col;
     public LayerMask groundCheck;
+    public bool detected;
 
     //Run
     bool running;
@@ -45,6 +46,21 @@ public class CarmelAngain : MonoBehaviour
     public GameObject Ladder;
     private bool onLadder=false;
 
+    //Life
+    public int lifecounter;
+    public GameObject Ghost;
+
+    //ENEMIES
+    public GameObject black01;
+    public GameObject black02;
+    public GameObject black03;
+    public GameObject brown01;
+    public GameObject brown02;
+    int blackspider01;
+    int blackspider02;
+    int blackspider03;
+    int brownpider01;
+    int brownpider02;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,7 +76,12 @@ public class CarmelAngain : MonoBehaviour
         running = false;
         Animator.SetBool("running", false);
         col.enabled = true;
-       
+        lifecounter = 50;
+        blackspider01 = 1;
+        blackspider02 = 1;
+        blackspider03 = 1;
+        brownpider01 = 1;
+        brownpider02 = 1;
     }
 
     // Update is called once per frame
@@ -181,12 +202,14 @@ public class CarmelAngain : MonoBehaviour
 
         }
 
+            //LIFE
 
-
-
-
-
-
+            if (lifecounter <= 0 && lifecounter >-50)
+        {
+            rend.enabled = false;
+            Instantiate(Ghost, transform.position, transform.rotation);
+            lifecounter = -60;
+        }
 
 
     }
@@ -212,7 +235,7 @@ public class CarmelAngain : MonoBehaviour
     }
 
 
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Rifle")
@@ -222,11 +245,47 @@ public class CarmelAngain : MonoBehaviour
             Gun.transform.localPosition = new Vector3(0.0017f, 0.007f, 0.0153f);
             Gun.transform.localEulerAngles = new Vector3(-23.522f, 79.60201f, -429.104f);
         }
-        if(other.gameObject.tag == "Ladder")
+
+        if (other.gameObject.tag == "Ladder")
         {
             onLadder = true;
         }
+
+        //INT ENEMIES
+
+        if (detected && blackspider01 >=0)
+        {
+            Instantiate(black01, new Vector3(transform.localPosition.x-200, transform.localPosition.y,transform.localPosition.z-200), transform.localRotation);
+            blackspider01 = blackspider01-2;
+        }
+
+        if (detected && blackspider02 >= 0)
+        {
+            Instantiate(black02, new Vector3(transform.localPosition.x - 300, transform.localPosition.y, transform.localPosition.z - 100), transform.localRotation);
+            blackspider02 = blackspider02 - 2;
+        }
+
+        if (detected && blackspider03 >= 0)
+        {
+            Instantiate(black03, new Vector3(transform.localPosition.x - 100, transform.localPosition.y, transform.localPosition.z - 300), transform.localRotation);
+            blackspider03 = blackspider03 - 2;
+        }
+
+
+        if (detected && brownpider01 >= 0)
+        {
+            Instantiate(brown01, new Vector3(transform.localPosition.x - 10, transform.localPosition.y, transform.localPosition.z - 250), transform.localRotation);
+            brownpider01 = brownpider01 - 2;
+        }
+
+        if (detected && brownpider02 >= 0)
+        {
+            Instantiate(brown02, new Vector3(transform.localPosition.x - 200, transform.localPosition.y, transform.localPosition.z + 200), transform.localRotation);
+            brownpider02 = brownpider02 - 2;
+        }
     }
+
+    
     private void OnTriggerExit(Collider other)
     {
         if(other.gameObject.tag == "Ladder")

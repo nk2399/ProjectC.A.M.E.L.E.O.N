@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         bulletlifespan = 5;
-        speed = 200;
+        speed = 450;
         bullet = GetComponent<Rigidbody>();
     }
 
