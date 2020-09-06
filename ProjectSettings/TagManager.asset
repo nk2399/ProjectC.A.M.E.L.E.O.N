@@ -13,6 +13,7 @@ TagManager:
   - DoorLockCube
   - JAILDOORKEYPLACE
   - parrot
+  - Ladder
   layers:
   - Default
   - TransparentFX

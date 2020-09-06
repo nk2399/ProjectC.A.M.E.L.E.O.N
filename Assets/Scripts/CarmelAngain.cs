@@ -41,6 +41,10 @@ public class CarmelAngain : MonoBehaviour
     //Run
     bool running;
 
+    //Ladder
+    public GameObject Ladder;
+    private bool onLadder=false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,7 +66,7 @@ public class CarmelAngain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ground check
+        // curser lock
         
         Cursor.lockState = CursorLockMode.Locked;
         //Camera
@@ -79,13 +83,21 @@ public class CarmelAngain : MonoBehaviour
         x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         z = Input.GetAxis("Vertical") * speed * Time.deltaTime;
 
-        transform.Translate(x, 0, z);
+        if (onLadder == false)
+        {
+            transform.Translate(x, 0, z);
+        }
+        else if (onLadder == true)
+        {
 
+            transform.Translate(0, z*3, 0);
+           
+        }
         //Jump
         if (Input.GetKey(KeyCode.Space) && ground)
         {
             
-            rb.AddForce(0, 2500, 0);
+            rb.AddForce(0, 5000, 0);
         }
 
         if (ground == false)
@@ -209,6 +221,17 @@ public class CarmelAngain : MonoBehaviour
             Gun.transform.parent = HandPostion.transform;
             Gun.transform.localPosition = new Vector3(0.0017f, 0.007f, 0.0153f);
             Gun.transform.localEulerAngles = new Vector3(-23.522f, 79.60201f, -429.104f);
+        }
+        if(other.gameObject.tag == "Ladder")
+        {
+            onLadder = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag == "Ladder")
+        {
+            onLadder = false;
         }
     }
 
