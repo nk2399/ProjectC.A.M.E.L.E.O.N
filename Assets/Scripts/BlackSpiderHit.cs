@@ -30,7 +30,6 @@ public class BlackSpiderHit : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            print("HIT");
             player.GetComponent<CarmelAngain>().lifecounter--;
         }
     }
