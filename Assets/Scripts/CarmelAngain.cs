@@ -56,11 +56,11 @@ public class CarmelAngain : MonoBehaviour
     public GameObject black03;
     public GameObject brown01;
     public GameObject brown02;
-    int blackspider01;
-    int blackspider02;
-    int blackspider03;
-    int brownpider01;
-    int brownpider02;
+    public int blackspider01;
+    public int blackspider02;
+    public int blackspider03;
+    public int brownpider01;
+    public int brownpider02;
     // Start is called before the first frame update
     void Start()
     {
@@ -261,20 +261,20 @@ public class CarmelAngain : MonoBehaviour
 
         if (detected && blackspider02 >= 0)
         {
-            Instantiate(black02, new Vector3(transform.localPosition.x - 300, transform.localPosition.y, transform.localPosition.z - 100), transform.localRotation);
+            Instantiate(black02, new Vector3(transform.localPosition.x - 200, transform.localPosition.y, transform.localPosition.z - 100), transform.localRotation);
             blackspider02 = blackspider02 - 2;
         }
 
         if (detected && blackspider03 >= 0)
         {
-            Instantiate(black03, new Vector3(transform.localPosition.x - 100, transform.localPosition.y, transform.localPosition.z - 300), transform.localRotation);
+            Instantiate(black03, new Vector3(transform.localPosition.x - 100, transform.localPosition.y, transform.localPosition.z - 200), transform.localRotation);
             blackspider03 = blackspider03 - 2;
         }
 
 
         if (detected && brownpider01 >= 0)
         {
-            Instantiate(brown01, new Vector3(transform.localPosition.x - 10, transform.localPosition.y, transform.localPosition.z - 250), transform.localRotation);
+            Instantiate(brown01, new Vector3(transform.localPosition.x - 10, transform.localPosition.y, transform.localPosition.z - 200), transform.localRotation);
             brownpider01 = brownpider01 - 2;
         }
 
@@ -283,6 +283,7 @@ public class CarmelAngain : MonoBehaviour
             Instantiate(brown02, new Vector3(transform.localPosition.x - 200, transform.localPosition.y, transform.localPosition.z + 200), transform.localRotation);
             brownpider02 = brownpider02 - 2;
         }
+
     }
 
     

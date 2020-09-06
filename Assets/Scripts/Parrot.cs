@@ -12,6 +12,7 @@ public class Parrot : MonoBehaviour
     public MeshRenderer meshrend;
     float counter;
     int val;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,11 @@ public class Parrot : MonoBehaviour
             counter = val;
             Animator.SetBool("detected", false);
             meshrend.enabled = true;
+            player.GetComponent<CarmelAngain>().blackspider01 = 1;
+            player.GetComponent<CarmelAngain>().blackspider02 = 1;
+            player.GetComponent<CarmelAngain>().blackspider03 = 1;
+            player.GetComponent<CarmelAngain>().brownpider01 = 1;
+            player.GetComponent<CarmelAngain>().brownpider02 = 1;
         }
 
 

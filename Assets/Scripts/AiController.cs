@@ -16,6 +16,7 @@ public class AiController : MonoBehaviour
     int life;
     public GameObject browndead;
     public GameObject blackdead;
+    float timecounter;
 
 
     void Start()
@@ -23,7 +24,8 @@ public class AiController : MonoBehaviour
         //animalCounter = GameObject.Find("AnimalCounter");
         Player = GameObject.Find("CARMEL");
         PlayerTransform = Player.transform;
-        life = 4;
+        life = 10;
+        timecounter = 4;
         
     }
 
@@ -40,11 +42,16 @@ public class AiController : MonoBehaviour
 
        if (life <=0)
         {
-            //Destroy(gameObject);
+            timecounter = timecounter - Time.deltaTime;
             anim.RemoveClip("hit2");
             anim.RemoveClip("walk");
             anim.Play("death1");
             MoveSpeed = 0;
+        }
+
+       if (timecounter <=0)
+        {
+            Destroy(gameObject);
         }
 
 
