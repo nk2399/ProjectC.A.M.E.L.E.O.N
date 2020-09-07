@@ -15,6 +15,8 @@ TagManager:
   - parrot
   - Ladder
   - bullet
+  - STARTPLAY
+  - SwitchCam
   layers:
   - Default
   - TransparentFX
@@ -28,8 +30,8 @@ TagManager:
   - Grappable
   - CanBreakWithGrapple
   - GLOW
-  - 
-  - 
+  - play
+  - ButterflyPowerup
   - 
   - 
   - 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CarmelAngain : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class CarmelAngain : MonoBehaviour
     float Rotation;
     float RotationSpeed;
     float CameraFinal;
+    public Camera cam;
     public Transform Camera;
 
     //Movement
@@ -51,7 +53,7 @@ public class CarmelAngain : MonoBehaviour
     public GameObject Ghost;
     public GameObject eyes2;
     SkinnedMeshRenderer eyesrender;
-
+    private bool gameOver = false;
 
     //ENEMIES
     public GameObject black01;
@@ -65,6 +67,7 @@ public class CarmelAngain : MonoBehaviour
     public int brownpider01;
     public int brownpider02;
 
+    
 
 
 
@@ -83,23 +86,25 @@ public class CarmelAngain : MonoBehaviour
         running = false;
         Animator.SetBool("running", false);
         col.enabled = true;
-        lifecounter = 50;
+        lifecounter = 55;
         blackspider01 = 1;
         blackspider02 = 1;
         blackspider03 = 1;
         brownpider01 = 1;
         brownpider02 = 1;
         eyesrender = eyes2.GetComponent<SkinnedMeshRenderer>();
-
+        cam = GetComponent<SwitchCameras>().FPcamera;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         // curser lock
-        
-        Cursor.lockState = CursorLockMode.Locked;
-        
+       // if (gameOver == false)
+            Cursor.lockState = CursorLockMode.Locked;
+      /* if ( gameOver == true)
+           Cursor.lockState = CursorLockMode.None;*/
         
         //Camera
         Rotation = Input.GetAxis("Mouse X") * RotationSpeed * Time.deltaTime;
@@ -108,7 +113,7 @@ public class CarmelAngain : MonoBehaviour
         CameraRotation = Input.GetAxis("Mouse Y") * RotationSpeed * Time.deltaTime;
         CameraFinal -= CameraRotation;
         CameraFinal = Mathf.Clamp(CameraFinal, -90, 65);
-        Camera.localRotation = Quaternion.Euler(CameraFinal, 0, 0);
+        cam.transform.localRotation = Quaternion.Euler(CameraFinal, 0, 0);
 
 
         //Movement
@@ -238,11 +243,14 @@ public class CarmelAngain : MonoBehaviour
 
             if (lifecounter <= 0 && lifecounter >-50)
         {
+            gameOver = true;
             rend.enabled = false;
             Instantiate(Ghost, transform.position, transform.rotation);
             lifecounter = -60;
             Gun.GetComponent<Rifle>().dead = true;
             eyesrender.enabled = false;
+            SceneManager.LoadScene("GameOver");
+
         }
 
 

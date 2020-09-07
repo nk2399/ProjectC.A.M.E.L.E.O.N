@@ -18,7 +18,7 @@ public class HealthBar : MonoBehaviour
     }
     private void Update()
     {
-        if (player.lifecounter >= 53f)
+        if (player.lifecounter >= 54f)
         {
             lifeCounterConvertion = 9;
         }

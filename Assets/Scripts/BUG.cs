@@ -15,7 +15,7 @@ public class BUG : MonoBehaviour
     public Animator animator;
     int life;
     float timecounter;
-    public Animation anim;
+   // public Animation anim;
 
     void Start()
     {
