@@ -883,6 +883,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1442835923401192955}
   - component: {fileID: 1442835923401192956}
+  - component: {fileID: 8247657729878680747}
   m_Layer: 0
   m_Name: PM3D_Sphere3D1_3
   m_TagString: Untagged
@@ -957,6 +958,18 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0020675408, y: 0.0128159635, z: 0.011689823}
     m_Extent: {x: 0.0143824285, y: 0.004832547, z: 0.00853496}
   m_DirtyAABB: 0
+--- !u!114 &8247657729878680747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442835923401192954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560552cc292e2134aab877af29a4a11c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1442835923415302760
 GameObject:
   m_ObjectHideFlags: 0

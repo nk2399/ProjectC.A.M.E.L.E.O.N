@@ -49,6 +49,9 @@ public class CarmelAngain : MonoBehaviour
     //Life
     public int lifecounter;
     public GameObject Ghost;
+    public GameObject eyes2;
+    SkinnedMeshRenderer eyesrender;
+
 
     //ENEMIES
     public GameObject black01;
@@ -61,6 +64,10 @@ public class CarmelAngain : MonoBehaviour
     public int blackspider03;
     public int brownpider01;
     public int brownpider02;
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +89,8 @@ public class CarmelAngain : MonoBehaviour
         blackspider03 = 1;
         brownpider01 = 1;
         brownpider02 = 1;
+        eyesrender = eyes2.GetComponent<SkinnedMeshRenderer>();
+
     }
 
     // Update is called once per frame
@@ -90,6 +99,8 @@ public class CarmelAngain : MonoBehaviour
         // curser lock
         
         Cursor.lockState = CursorLockMode.Locked;
+        
+        
         //Camera
         Rotation = Input.GetAxis("Mouse X") * RotationSpeed * Time.deltaTime;
         transform.Rotate(0, Rotation, 0);
@@ -152,22 +163,43 @@ public class CarmelAngain : MonoBehaviour
         }
 
 
+       // GRAPLE
+       if (Input.GetMouseButton(1))
+        {
+            Animator.SetBool("graple", true);
+        }
 
-            //Run
-            if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetMouseButtonUp(1))
+        {
+            Animator.SetBool("graple", false);
+        }
+
+
+
+
+        //Run
+        if (Input.GetKey(KeyCode.LeftShift))
             {
                 speed = 160;
-                Animator.SetBool("running", true);
-                Animator.SetBool("walking", false);
-                Animator.SetBool("WalkingRifle", false);
-              
+
+            running = true;
             }
 
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 speed = 80;
-                Animator.SetBool("running", false);
+                running = false;
             }
+
+            if(running)
+        {
+            Animator.SetBool("running", true);
+
+        }
+            if(running == false)
+        {
+            Animator.SetBool("running", false);
+        }
 
 
 
@@ -209,7 +241,10 @@ public class CarmelAngain : MonoBehaviour
             rend.enabled = false;
             Instantiate(Ghost, transform.position, transform.rotation);
             lifecounter = -60;
+            Gun.GetComponent<Rifle>().dead = true;
+            eyesrender.enabled = false;
         }
+
 
 
     }
