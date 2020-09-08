@@ -14,6 +14,10 @@ public class GrapplingGun : MonoBehaviour
     public Camera cam2;
     public int addlife ;
     public GameObject Carmel;
+    public AudioSource audiomeneger;
+    public AudioClip life;
+    public AudioClip breaks;
+
 
     private void Start()
     {
@@ -35,6 +39,8 @@ public class GrapplingGun : MonoBehaviour
         {
             StopGrapple();
         }
+
+        cam2 = Carmel.GetComponent<CarmelAngain>().cam;
     }
 
 
@@ -88,7 +94,8 @@ public class GrapplingGun : MonoBehaviour
 
              Destroy(hit.transform.gameObject );
              Instantiate(destroyedVersion, hit.transform.position, hit.transform.rotation);
-         }
+            audiomeneger.PlayOneShot(breaks);
+        }
 
        else if (Physics.Raycast(cam2.transform.position, cam2.transform.forward, out hit, maxDistance, ButterflyPowerup))
         {
@@ -116,6 +123,8 @@ public class GrapplingGun : MonoBehaviour
 
 
             Destroy(hit.transform.gameObject);
+
+            audiomeneger.PlayOneShot(life);
         }
     }
 

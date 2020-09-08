@@ -10,6 +10,8 @@ public class HealthBar : MonoBehaviour
     public Image CarmelUI;
     private CarmelAngain player;
     private int lifeCounterConvertion;
+    public AudioSource audiomeneger;
+    public AudioClip hurt;
 
     private void Start()
     {
@@ -21,38 +23,47 @@ public class HealthBar : MonoBehaviour
         if (player.lifecounter >= 54f)
         {
             lifeCounterConvertion = 9;
+
         }
         else if (player.lifecounter >= 47f  && player.lifecounter <= 52 )
         {
             lifeCounterConvertion = 8;
+
         }
         else if(player.lifecounter >= 41f && player.lifecounter <= 46)
         {
             lifeCounterConvertion = 7;
+
         }
         else if(player.lifecounter >= 35f && player.lifecounter <= 40)
         {
             lifeCounterConvertion = 6;
+
         }
         else if(player.lifecounter >= 29f && player.lifecounter <= 34)
         {
             lifeCounterConvertion = 5;
+
         }
         else if(player.lifecounter >= 23f && player.lifecounter <= 28)
         {
             lifeCounterConvertion = 4;
+
         }
         else if(player.lifecounter >= 17f && player.lifecounter <= 22)
         {
             lifeCounterConvertion = 3;
+
         }
         else if(player.lifecounter >= 11f && player.lifecounter <= 16)
         {
             lifeCounterConvertion = 2;
+
         }
         else if(player.lifecounter >= 5f && player.lifecounter <= 10)
         {
             lifeCounterConvertion = 1;
+
         }
         else if(player.lifecounter >= 0f && player.lifecounter <= 4)
         {
@@ -60,5 +71,55 @@ public class HealthBar : MonoBehaviour
         }
 
         CarmelUI.sprite = CarmelHealthSprites[lifeCounterConvertion];
+
+
+        if (lifeCounterConvertion == 8)
+        {
+            audiomeneger.PlayOneShot(hurt);
+        }
+
+        /*if (lifeCounterConvertion == 7)
+        {
+            audiomeneger.PlayOneShot(hurt);
+        }
+
+        if (lifeCounterConvertion == 6)
+        {
+            audiomeneger.PlayOneShot(hurt);
+        }
+
+        if (lifeCounterConvertion == 5)
+        {
+            audiomeneger.PlayOneShot(hurt);
+        }
+
+        if (lifeCounterConvertion == 4)
+        {
+            audiomeneger.PlayOneShot(hurt);
+        }
+
+        if (lifeCounterConvertion == 3)
+        {
+            audiomeneger.PlayOneShot(hurt);
+        }
+
+        if (lifeCounterConvertion == 2)
+        {
+            audiomeneger.PlayOneShot(hurt);
+        }*/
+
+        if (lifeCounterConvertion == 1)
+        {
+            audiomeneger.PlayOneShot(hurt);
+        }
+
+
+
     }
+
+    
+
+
+
+   
 }

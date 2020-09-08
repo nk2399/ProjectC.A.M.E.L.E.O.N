@@ -17,6 +17,9 @@ public class AiController : MonoBehaviour
     public GameObject browndead;
     public GameObject blackdead;
     float timecounter;
+    public AudioClip dead;
+    public GameObject sound;
+    public AudioSource audiomeneger;
 
 
     void Start()
@@ -27,6 +30,11 @@ public class AiController : MonoBehaviour
         life = 10;
         timecounter = 4;
         
+    }
+    private void Awake()
+    {
+        sound = GameObject.Find("Audio Source");
+        audiomeneger = sound.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -40,13 +48,14 @@ public class AiController : MonoBehaviour
             anim.Play("walk");
         }
 
-       if (life <=0)
+       if (life ==0)
         {
             timecounter = timecounter - Time.deltaTime;
             anim.RemoveClip("hit2");
             anim.RemoveClip("walk");
             anim.Play("death1");
             MoveSpeed = 0;
+            audiomeneger.PlayOneShot(dead);
         }
 
        if (timecounter <=0)

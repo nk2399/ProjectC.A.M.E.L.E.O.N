@@ -17,6 +17,7 @@ TagManager:
   - bullet
   - STARTPLAY
   - SwitchCam
+  - buterflay
   layers:
   - Default
   - TransparentFX

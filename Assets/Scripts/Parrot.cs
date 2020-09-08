@@ -13,6 +13,9 @@ public class Parrot : MonoBehaviour
     float counter;
     int val;
     public GameObject player;
+    public AudioSource audiomeneger;
+    public AudioClip alarm;
+    public AudioClip parrot;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +35,8 @@ public class Parrot : MonoBehaviour
             Animator.SetBool("detected", true);
             meshrend.enabled = false;
             counter = counter - Time.deltaTime;
+            audiomeneger.PlayOneShot(alarm);
+            audiomeneger.PlayOneShot(parrot);
         }
 
         if (counter <= 0)
@@ -45,6 +50,7 @@ public class Parrot : MonoBehaviour
             player.GetComponent<CarmelAngain>().blackspider03 = 1;
             player.GetComponent<CarmelAngain>().brownpider01 = 1;
             player.GetComponent<CarmelAngain>().brownpider02 = 1;
+            audiomeneger.Pause();
         }
 
 

@@ -30,6 +30,7 @@ public class BugHit : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             player.GetComponent<CarmelAngain>().lifecounter--;
+
         }
     }
 }

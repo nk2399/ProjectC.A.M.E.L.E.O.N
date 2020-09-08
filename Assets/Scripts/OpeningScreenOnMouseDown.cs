@@ -7,8 +7,13 @@ public class OpeningScreenOnMouseDown : MonoBehaviour
 {
 
     private Vector3 mOffset;
+    public AudioSource audiomeneger;
+    public AudioClip play;
+
 
     private float mZCoord;
+
+
 
     void OnMouseDown()
 
@@ -67,6 +72,7 @@ public class OpeningScreenOnMouseDown : MonoBehaviour
           
            
             SceneManager.LoadScene("level 1 Take 3");
+            audiomeneger.PlayOneShot(play);
         }
     }
     

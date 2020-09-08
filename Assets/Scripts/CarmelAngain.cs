@@ -54,6 +54,7 @@ public class CarmelAngain : MonoBehaviour
     public GameObject eyes2;
     SkinnedMeshRenderer eyesrender;
     private bool gameOver = false;
+    float restart;
 
     //ENEMIES
     public GameObject black01;
@@ -67,7 +68,18 @@ public class CarmelAngain : MonoBehaviour
     public int brownpider01;
     public int brownpider02;
 
-    
+    //SOUNDS
+    public AudioSource AudioMeneger;
+    public AudioClip Shooting;
+    public AudioClip wepon;
+    public AudioClip jumping;
+    public AudioClip hurt;
+    public AudioClip graple;
+    public AudioClip dead;
+    public AudioClip transperenting;
+
+
+
 
 
 
@@ -94,6 +106,7 @@ public class CarmelAngain : MonoBehaviour
         brownpider02 = 1;
         eyesrender = eyes2.GetComponent<SkinnedMeshRenderer>();
         cam = GetComponent<SwitchCameras>().FPcamera;
+        restart = 5;
         
     }
 
@@ -134,12 +147,13 @@ public class CarmelAngain : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && ground)
         {
             
-            rb.AddForce(0, 5000, 0);
+            rb.AddForce(0, 6500, 0);
+            AudioMeneger.PlayOneShot(jumping);
         }
 
         if (ground == false)
         {
-            rb.AddForce(0, -25, 0);
+            rb.AddForce(0, -2, 0);
         }
 
         //Animation
@@ -167,16 +181,25 @@ public class CarmelAngain : MonoBehaviour
             Animator.SetBool("rifle", true);
         }
 
+        if(x < 0 || z < 0 && rifle)
+        {
+            Animator.SetBool("WalkingRifle", false);
+            Animator.SetBool("rifle", false);
+            Animator.SetBool("walkingbackwards", true);
+        }
 
-       // GRAPLE
-       if (Input.GetMouseButton(1))
+
+        // GRAPLE
+        if (Input.GetMouseButton(1))
         {
             Animator.SetBool("graple", true);
+            
         }
 
         if (Input.GetMouseButtonUp(1))
         {
             Animator.SetBool("graple", false);
+            AudioMeneger.PlayOneShot(graple);
         }
 
 
@@ -214,18 +237,25 @@ public class CarmelAngain : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && rifle)
         {
             Instantiate(Bullet, ShootPoint.transform.position, ShootPoint.transform.rotation);
-
+            
         }
 
-        //Transperent
-        if (Input.GetKeyDown(KeyCode.G) && x < 0.3f && z < 0.31f)
+        if (Input.GetMouseButtonUp(0) && rifle)
+        {
+            AudioMeneger.PlayOneShot(Shooting);
+        }
+
+
+            //Transperent
+            if (Input.GetKeyDown(KeyCode.G) && x < 0.3f && z < 0.31f)
             {
                 rend.enabled = false;
                 rendeyes.enabled = false;
                 col.enabled = false;
                 rb.useGravity = false;
                 speed = 0;
-            }
+                AudioMeneger.PlayOneShot(transperenting);
+        }
 
 
 
@@ -236,6 +266,7 @@ public class CarmelAngain : MonoBehaviour
                 col.enabled = true;
                 rb.useGravity = true;
                 speed = 80;
+                AudioMeneger.PlayOneShot(transperenting);
 
         }
 
@@ -249,9 +280,21 @@ public class CarmelAngain : MonoBehaviour
             lifecounter = -60;
             Gun.GetComponent<Rifle>().dead = true;
             eyesrender.enabled = false;
-            SceneManager.LoadScene("GameOver");
+            AudioMeneger.PlayOneShot(dead);
 
         }
+
+
+            if(gameOver)
+        {
+            restart = restart - Time.deltaTime;
+        }
+
+            if (restart <=0)
+        {
+            SceneManager.LoadScene("restart");
+        }
+            
 
 
 
@@ -287,6 +330,7 @@ public class CarmelAngain : MonoBehaviour
             Gun.transform.parent = HandPostion.transform;
             Gun.transform.localPosition = new Vector3(0.0017f, 0.007f, 0.0153f);
             Gun.transform.localEulerAngles = new Vector3(-23.522f, 79.60201f, -429.104f);
+            AudioMeneger.PlayOneShot(wepon);
         }
 
         if (other.gameObject.tag == "Ladder")
