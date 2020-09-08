@@ -55,7 +55,7 @@ public class AiController : MonoBehaviour
             anim.RemoveClip("walk");
             anim.Play("death1");
             MoveSpeed = 0;
-            audiomeneger.PlayOneShot(dead);
+            //audiomeneger.PlayOneShot(dead);
         }
 
        if (timecounter <=0)

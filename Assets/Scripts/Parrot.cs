@@ -21,7 +21,7 @@ public class Parrot : MonoBehaviour
     void Start()
     {
         meshrend = mesh.GetComponent<MeshRenderer>();
-        val = 17;
+        val = 25;
         counter = val;
     }
 
